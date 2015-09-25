@@ -3,6 +3,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var refuelController = require('./controllers/refuel');
+var userController = require('./controllers/user');
 
 // Connect to myFuelCloud MongoDB
 mongoose.connect('mongodb://localhost:27017/myFuelCloud');
@@ -28,6 +29,11 @@ router.route('/refuels/:refuel_id')
   .get(refuelController.getRefuel)
   .put(refuelController.putRefuel)
   .delete(refuelController.deleteRefuel);
+
+// Create endpoint handlers for /users
+router.route('/users')
+  .post(userController.postUsers)
+  .get(userController.getUsers);
 
 // Register all our routes with /api
 app.use('/api', router);
