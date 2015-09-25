@@ -8,7 +8,8 @@ var RefuelSchema   = new mongoose.Schema({
 		gas_station: String,
 		price_amount: Number,
 		fuel_amount: Number,
-		previous_distance: Number
+		previous_distance: Number,
+		userId: String
 });
 
 // Export the Mongoose model
