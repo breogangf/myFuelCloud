@@ -1,12 +1,37 @@
 {
-  "name": "beerlocker",
-  "main": "server.js",
+  "name": "myFuelCloud",
+  "version": "0.0.1",
+  "description": "My personal fuel consumption monitor",
+  "author": {
+    "name": "Breogán González Fernández",
+    "email": "breogangf@gmail.com",
+    "url": "https://github.com/breogangf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/breogangf/myFuelCloud"
+  },
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.0",
     "express": "^4.13.3",
+    "method-override": "^2.3.5",
+    "mocha": "^2.3.3",
+    "mongodb": "^2.0.43",
     "mongoose": "^3.9.7",
     "passport": "^0.3.0",
-    "passport-http": "^0.3.0"
-  }
+    "passport-http": "^0.3.0",
+    "should": "^7.1.0",
+    "supertest": "^1.1.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "test": "NODE_ENV=test mocha -R spec ./test/"
+  },
+  "private": true,
+  "main": "server.js"
 }
