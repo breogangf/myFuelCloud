@@ -4,8 +4,9 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride  = require("method-override");
 var passport = require('passport');
-var refuelController = require('./controllers/refuel');
 var userController = require('./controllers/user');
+var vehicleController = require('./controllers/vehicle');
+var refuelController = require('./controllers/refuel');
 var authController = require('./controllers/auth');
 var config = require('./config');
 
@@ -45,17 +46,6 @@ app.all('*', function(req, res, next) {
 // Create our Express router
 var router = express.Router();
 
-// Create endpoint handlers for /refuel
-router.route('/refuel')
-  .post(authController.isAuthenticated, refuelController.postRefuels)
-  .get(authController.isAuthenticated, refuelController.getRefuels);
-
-//Create endpoint handlers for /refuel/:refuel_id
-router.route('/refuel/:refuel_id')
-  .get(authController.isAuthenticated, refuelController.getRefuel)
-  .put(authController.isAuthenticated, refuelController.putRefuel)
-  .delete(authController.isAuthenticated, refuelController.deleteRefuel);
-
 // Create endpoint handlers for /user
 router.route('/user')
   .post(userController.addUser)
@@ -70,6 +60,36 @@ router.route('/user/:user_id')
 //Create endpoint handlers for /user/username/:username
 router.route('/user/username/:username')
   .get(userController.findUserByUsername)
+
+
+
+
+
+// Create endpoint handlers for /vehicle
+router.route('/vehicle')
+  .post(authController.isAuthenticated, vehicleController.addVehicle)
+  .get(authController.isAuthenticated, vehicleController.getAllVehicles)
+
+//Create endpoint handlers for /vehicle/:vehicleId
+router.route('/vehicle/:vehicleId')
+  .get(authController.isAuthenticated, vehicleController.findVehicleById)
+  .put(authController.isAuthenticated, vehicleController.updateVehicle)
+  .delete(authController.isAuthenticated, vehicleController.deleteVehicle);
+
+
+
+
+
+// Create endpoint handlers for /refuel
+router.route('/refuel')
+  .post(authController.isAuthenticated, refuelController.postRefuels)
+  .get(authController.isAuthenticated, refuelController.getRefuels);
+
+//Create endpoint handlers for /refuel/:refuel_id
+router.route('/refuel/:refuel_id')
+  .get(authController.isAuthenticated, refuelController.getRefuel)
+  .put(authController.isAuthenticated, refuelController.putRefuel)
+  .delete(authController.isAuthenticated, refuelController.deleteRefuel);
 
 // Register all our routes with /api
 app.use('/api', router);
