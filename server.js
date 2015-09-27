@@ -52,18 +52,14 @@ router.route('/user')
   .get(authController.isAuthenticated, userController.getAllUsers)
   .delete(authController.isAuthenticated, userController.deleteUser);
 
-//Create endpoint handlers for /user/:user_id
-router.route('/user/:user_id')
+//Create endpoint handlers for /user/:userId
+router.route('/user/:userId')
   .get(authController.isAuthenticated, userController.findUserById)
   .put(authController.isAuthenticated, userController.updateUser);
 
 //Create endpoint handlers for /user/username/:username
 router.route('/user/username/:username')
   .get(userController.findUserByUsername)
-
-
-
-
 
 // Create endpoint handlers for /vehicle
 router.route('/vehicle')
@@ -76,19 +72,15 @@ router.route('/vehicle/:vehicleId')
   .put(authController.isAuthenticated, vehicleController.updateVehicle)
   .delete(authController.isAuthenticated, vehicleController.deleteVehicle);
 
-
-
-
-
 // Create endpoint handlers for /refuel
 router.route('/refuel')
-  .post(authController.isAuthenticated, refuelController.postRefuels)
-  .get(authController.isAuthenticated, refuelController.getRefuels);
+  .post(authController.isAuthenticated, refuelController.addRefuel)
+  .get(authController.isAuthenticated, refuelController.getAllRefuels);
 
-//Create endpoint handlers for /refuel/:refuel_id
-router.route('/refuel/:refuel_id')
+//Create endpoint handlers for /refuel/:refuelId
+router.route('/refuel/:refuelId')
   .get(authController.isAuthenticated, refuelController.getRefuel)
-  .put(authController.isAuthenticated, refuelController.putRefuel)
+  .put(authController.isAuthenticated, refuelController.updateRefuel)
   .delete(authController.isAuthenticated, refuelController.deleteRefuel);
 
 // Register all our routes with /api

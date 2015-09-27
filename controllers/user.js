@@ -13,9 +13,9 @@ exports.getAllUsers = function(req, res) {
 
 //GET - Return a User with specified ID
 exports.findUserById = function(req, res) {
-  User.findById(req.params.user_id, function (err, user) {
+  User.findById(req.params.userId, function (err, user) {
             if (err) return res.send(404, err.user);
-            //console.log('GET /user/' + req.params.user_id);
+            //console.log('GET /user/' + req.params.userId);
             res.status(200).jsonp(user);
   });
 };
@@ -65,8 +65,8 @@ exports.addUser = function(req, res) {
 //PUT - Update a User already exists
 exports.updateUser = function(req, res) {
 
-//console.log('PUT /user/' + req.params.user_id);
-  User.findById(req.params.user_id, function (err, user) {
+//console.log('PUT /user/' + req.params.userId);
+  User.findById(req.params.userId, function (err, user) {
     user.username = req.body.username,
       user.password = req.body.password,
       user.created_at = req.body.created_at,

@@ -9,7 +9,11 @@ var RefuelSchema   = new mongoose.Schema({
 		price_amount: Number,
 		fuel_amount: Number,
 		previous_distance: Number,
-		userId: String
+		userId: String,
+		vehicle: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Vehicle'
+		}
 });
 
 // Export the Mongoose model
