@@ -12,6 +12,14 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  created_at: {
+    type: Number,
+    required: true
+  },
+  blocked: {
+    type: Boolean,
+    required: true
   }
 });
 
