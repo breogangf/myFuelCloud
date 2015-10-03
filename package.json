@@ -18,6 +18,8 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.0",
+    "ejs": "^2.3.4",
+    "email-templates": "^2.0.1",
     "express": "^4.13.3",
     "method-override": "^2.3.5",
     "mocha": "^2.3.3",
