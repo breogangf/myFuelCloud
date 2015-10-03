@@ -38,6 +38,7 @@ describe('Vehicle Test', function() {
                 .send({
                     "username": "breogangf",
                     "password": "Breogan2015",
+                    "email": "breogangf@gmail.com",
                     "created_at": 1439736878000,
                     "blocked": false
                 })
@@ -56,6 +57,7 @@ describe('Vehicle Test', function() {
                 .send({
                     "username": "braisgf",
                     "password": "Brais2015",
+                    "email": "braisgf@gmail.com",
                     "created_at": 1439736878006,
                     "blocked": false
                 })

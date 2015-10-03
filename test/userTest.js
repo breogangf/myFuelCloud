@@ -29,6 +29,7 @@ describe('User Test', function() {
                 .post('/api/user')
                 .send({
                     "username": "breogangf",
+                    "email": "breogangf@gmail.com",
                     "password": "Breogan2015",
                     "created_at": 1439736878000,
                     "blocked": false
@@ -46,6 +47,7 @@ describe('User Test', function() {
                 .post('/api/user')
                 .send({
                     "username": "breogangf",
+                    "email": "breogangf@gmail.com",
                     "password": "Breogan2015",
                     "created_at": 1439736878000,
                     "blocked": false
@@ -63,6 +65,7 @@ describe('User Test', function() {
                 .post('/api/user')
                 .send({
                     "username": "braisgf",
+                    "email": "braisgf@gmail.com",
                     "password": "Brais2015",
                     "created_at": 1439736878001,
                     "blocked": false
@@ -82,6 +85,7 @@ describe('User Test', function() {
                 .set('Authorization', 'Basic YnJhaXNnZjpCcmFpczIwMTU=')
                 .send({
                     "username": "braisgf6",
+                    "email": "braisgf6@gmail.com",
                     "password": "Brais2016",
                     "created_at": 1439736878001,
                     "blocked": false
@@ -106,7 +110,9 @@ describe('User Test', function() {
                     res.body.should.be.instanceof(Array);
                     res.body.should.have.length(2);
                     res.body[0].should.have.property('username', 'breogangf');
+                    res.body[0].should.have.property('email', 'breogangf@gmail.com');
                     res.body[1].should.have.property('username', 'braisgf6');
+                    res.body[1].should.have.property('email', 'braisgf6@gmail.com');
                     done();
                 });
         });
@@ -120,6 +126,7 @@ describe('User Test', function() {
                 .end(function(err, res) {
                     if (err) return done(err);
                     res.body.should.have.property('username', 'braisgf6');
+                    res.body.should.have.property('email', 'braisgf6@gmail.com');
                     done();
                 });
         });
@@ -132,6 +139,7 @@ describe('User Test', function() {
                 .end(function(err, res) {
                     if (err) return done(err);
                     res.body.should.have.property('username', 'braisgf6');
+                    res.body.should.have.property('email', 'braisgf6@gmail.com');
                     done();
                 });
         });

@@ -49,6 +49,7 @@ exports.addUser = function(req, res) {
             } else {
                 var user = new User({
                     username: req.body.username,
+                    email: req.body.email,
                     password: req.body.password,
                     created_at: req.body.created_at,
                     blocked: false,
@@ -68,6 +69,7 @@ exports.updateUser = function(req, res) {
 //console.log('PUT /user/' + req.params.userId);
   User.findById(req.params.userId, function (err, user) {
     user.username = req.body.username,
+    user.email = req.body.email,
       user.password = req.body.password,
       user.created_at = req.body.created_at,
       user.blocked = false
