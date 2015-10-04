@@ -17,13 +17,27 @@ exports.sendMail = function(req, res){
         name: name
     };
 
-        var smtpTransport = nodemailer.createTransport({
-        service: "Gmail",
-        auth: {
-            user: "xxxx@gmail.com",
-            pass: "xxxx"
-        }
-    });
+var generator = require('xoauth2').createXOAuth2Generator({
+    user: '{username}',
+    clientId: '{Client ID}',
+    clientSecret: '{Client Secret}',
+    refreshToken: '{refresh-token}',
+    accessToken: '{cached access token}' // optional
+});
+
+// listen for token updates
+// you probably want to store these to a db
+generator.on('token', function(token){
+    console.log('New token for %s: %s', token.user, token.accessToken);
+});
+
+// login
+var transporter = nodemailer.createTransport(({
+    service: 'gmail',
+    auth: {
+        xoauth2: generator
+    }
+}));
 
     newsletter.render(user, function (err, results) {
         if(err){
@@ -39,7 +53,7 @@ exports.sendMail = function(req, res){
                     html: htmlResult
                 };
             
-            smtpTransport.sendMail(mailOptions, function(error, response){
+            transporter.sendMail(mailOptions, function(error, response){
                 if(error){
                 console.log(error);
                 return res.send(500, error);

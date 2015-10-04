@@ -29,7 +29,8 @@
     "passport": "^0.3.0",
     "passport-http": "^0.3.0",
     "should": "^7.1.0",
-    "supertest": "^1.1.0"
+    "supertest": "^1.1.0",
+    "xoauth2": "^1.1.0"
   },
   "scripts": {
     "start": "NODE_ENV=production node server.js",
