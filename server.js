@@ -8,6 +8,7 @@ var userController = require('./controllers/user');
 var vehicleController = require('./controllers/vehicle');
 var refuelController = require('./controllers/refuel');
 var authController = require('./controllers/auth');
+var emailController = require('./controllers/email');
 var config = require('./config');
 
 // Connection to DB
@@ -56,6 +57,10 @@ router.route('/user')
 router.route('/user/:userId')
   .get(authController.isAuthenticated, userController.findUserById)
   .put(authController.isAuthenticated, userController.updateUser);
+
+//Create endpoint handlers for /email
+router.route('/email')
+  .post(authController.isAuthenticated, emailController.sendMail);
 
 //Create endpoint handlers for /user/username/:username
 router.route('/user/username/:username')

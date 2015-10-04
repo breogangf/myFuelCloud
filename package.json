@@ -18,15 +18,19 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.0",
+    "ejs": "^2.3.4",
+    "email-templates": "^2.0.1",
     "express": "^4.13.3",
     "method-override": "^2.3.5",
     "mocha": "^2.3.3",
     "mongodb": "^2.0.43",
     "mongoose": "^3.9.7",
+    "nodemailer": "^1.5.0",
     "passport": "^0.3.0",
     "passport-http": "^0.3.0",
     "should": "^7.1.0",
-    "supertest": "^1.1.0"
+    "supertest": "^1.1.0",
+    "xoauth2": "^1.1.0"
   },
   "scripts": {
     "start": "NODE_ENV=production node server.js",

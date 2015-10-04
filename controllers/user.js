@@ -57,7 +57,7 @@ exports.addUser = function(req, res) {
 
                 user.save(function (err, user) {
                     if (err) return res.send(500, err.user);
-                res.status(201).jsonp(user);
+                    res.status(201).jsonp(user);
                 });
             } 
         });
