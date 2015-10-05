@@ -1,0 +1,14 @@
+// Entities
+[User| username : string; email : string; password : string; createdAt : integer; blocked : boolean; {bg:wheat}]
+[Vehicle| brand : string; model : string; year : integer; created_at : integer; userId : string {bg:wheat}]
+[Refuel| date : integer; gas_price : double; gas_station : string; price_amount : double; fuel_amount : double; previous_distance : double; userId: string; vehicle : string {bg:wheat}]
+
+// Relationships
+[Refuel]1-1[Vehicle]
+[Refuel]1-1[User]
+
+// Notes
+[note:Note {bg:oldlace}]
+[note:Primary entity {bg:wheat}]
+[note:Secondary entity]
+[note:External entity {bg:lightcoral}]
