@@ -5,7 +5,7 @@ var should = require('should');
 var config = require('../config');
 require('../server.js');
 
-describe('Email Test', function() {
+xdescribe('Email Test', function() {
     describe('#email contact()', function() {
 
         before(function(done) {
