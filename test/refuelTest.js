@@ -216,6 +216,7 @@ describe('Refuel Test', function() {
                     if (err) return done(err);
                     res.body.should.have.property('previous_distance', 999.69);
                     res.body.should.have.property('fuel_amount', 9969.69);
+                    res.body.vehicle.should.have.property('brand', 'Subaru');
                     done();
                 });
         });

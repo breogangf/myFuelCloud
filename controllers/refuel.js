@@ -59,9 +59,12 @@ exports.updateRefuel = function(req, res) {
             refuel.created_by = req.body.created_by,
             refuel.vehicle = req.body.vehicle
 
-            refuel.save(function (err) {
-                if (err) return res.send(500, err.refuel);
+            refuel.save(function (err, refuel) {
+            if (err) return res.send(500, err.refuel);
+              Refuel.findOne(refuel).populate('vehicle').exec(function (err, refuel) {
+                //console.log(refuel);
                 res.status(200).jsonp(refuel);
+              });
             });
         });
 };
