@@ -128,6 +128,7 @@ describe('Refuel Test', function() {
                 .end(function(err, res) {
                     if (err) return done(err);
                     first_breogangf_refuel = res.body._id;
+                    res.body.vehicle.should.have.property('brand', 'Subaru');
                     done();
                 });
         });

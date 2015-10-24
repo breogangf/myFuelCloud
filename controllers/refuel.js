@@ -19,7 +19,10 @@ exports.addRefuel = function(req, res) {
 
         refuel.save(function (err, refuel) {
             if (err) return res.send(500, err.refuel);
+            Refuel.findOne(refuel).populate('vehicle').exec(function (err, refuel) {
+            //console.log(refuel);
             res.status(201).jsonp(refuel);
+            });
         });
 };
 
