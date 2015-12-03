@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 // Define our refuel schema
 var RefuelSchema   = new mongoose.Schema({
-		date: Date,
+		date: Number,
   		gas_price: Number,
 		gas_station: String,
 		price_amount: Number,

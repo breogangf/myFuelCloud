@@ -244,9 +244,11 @@ describe('Refuel Test', function() {
                     res.body[0].should.have.property('fuel_amount', 9969.69);
                     res.body[0].vehicle.should.have.property('brand', 'Subaru');
                     res.body[0].vehicle.should.have.property('model', 'WRX sti');
+                    res.body[0].should.have.property('date', 1439736869);
                     res.body[1].should.have.property('fuel_amount', 55.55);
                     res.body[1].vehicle.should.have.property('brand', "Mitsubishi");
                     res.body[1].vehicle.should.have.property('model', "Lancer evo X");
+                    res.body[1].should.have.property('date', 1439736855);
                     done();
                 });
         });
