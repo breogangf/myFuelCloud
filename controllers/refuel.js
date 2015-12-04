@@ -53,6 +53,7 @@ exports.updateRefuel = function(req, res) {
           refuel.date = req.body.date,
             refuel.gas_price = req.body.gas_price,
             refuel.price_amount = req.body.price_amount,
+            refuel.gas_station = req.body.gas_station,
             refuel.fuel_amount = req.body.fuel_amount,
             refuel.previous_distance = req.body.previous_distance,
             refuel.created_at = req.body.created_at,

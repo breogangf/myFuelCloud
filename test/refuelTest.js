@@ -117,10 +117,10 @@ describe('Refuel Test', function() {
                 .send({
                     "date": 1439736879,
                     "gas_price": 9.999,
+                    "gas_station": "Cepsa Noal Porto do Son",
                     "price_amount": 99.99,
                     "fuel_amount": 99.99,
                     "previous_distance": 999.99,
-                    "created_at": 1439736879,
                     "vehicle": first_breogangf_vehicle
                 })
                 .expect(201)
@@ -140,10 +140,10 @@ describe('Refuel Test', function() {
                 .send({
                     "date": 1439736855,
                     "gas_price": 5.5555,
+                    "gas_station": "Repsol Milladoiro, Santiago de Compostela",
                     "price_amount": 55.55,
                     "fuel_amount": 55.55,
                     "previous_distance": 555.55,
-                    "created_at": 1439736855,
                     "vehicle": second_breogangf_vehicle
                 })
                 .expect(201)
@@ -161,10 +161,10 @@ describe('Refuel Test', function() {
                 .send({
                     "date": 1439736877,
                     "gas_price": 7.777,
+                    "gas_station": "Cepsa Travesía de Vigo, Vigo",
                     "price_amount": 77.77,
                     "fuel_amount": 77.77,
                     "previous_distance": 777.77,
-                    "created_at": 1439736877,
                     "vehicle": second_breogangf_vehicle
                 })
                 .expect(201)
@@ -183,10 +183,10 @@ describe('Refuel Test', function() {
                 .send({
                     "date": 1439736878,
                     "gas_price": 8.888,
+                    "gas_station": "Repsol Plaza de España, Vigo",
                     "price_amount": 88.88,
                     "fuel_amount": 88.88,
                     "previous_distance": 888.88,
-                    "created_at": 1439736878,
                 })
                 .expect(201)
                 .expect('Content-Type', /json/)
@@ -203,11 +203,10 @@ describe('Refuel Test', function() {
                 .send({
                     "date": 1439736869,
                     "gas_price": 9.9969,
-                    "gas_station": 'Cepsa Porto do son',
+                    "gas_station": 'Cepsa Noal Porto do Son modificado',
                     "price_amount": 9969.69,
                     "fuel_amount": 9969.69,
                     "previous_distance": 999.69,
-                    "created_at": 1439736869,
                     "vehicle": first_breogangf_vehicle
                 })
                 .expect(200)
@@ -241,14 +240,43 @@ describe('Refuel Test', function() {
                     if (err) return done(err);
                     res.body.should.be.instanceof(Array);
                     res.body.should.have.length(2);
+
+                    res.body[0].should.have.property('date', 1439736869);
+                    res.body[0].should.have.property('gas_price', 9.9969);
+                    res.body[0].should.have.property('gas_station', "Cepsa Noal Porto do Son modificado");
+                    res.body[0].should.have.property('price_amount', 9969.69);
                     res.body[0].should.have.property('fuel_amount', 9969.69);
+                    res.body[0].should.have.property('previous_distance', 999.69);
                     res.body[0].vehicle.should.have.property('brand', 'Subaru');
                     res.body[0].vehicle.should.have.property('model', 'WRX sti');
                     res.body[0].should.have.property('date', 1439736869);
+
                     res.body[1].should.have.property('fuel_amount', 55.55);
                     res.body[1].vehicle.should.have.property('brand', "Mitsubishi");
                     res.body[1].vehicle.should.have.property('model', "Lancer evo X");
                     res.body[1].should.have.property('date', 1439736855);
+                    done();
+                });
+        });
+
+        it('GET /refuel - should return all the refuels created by braisgf', function(done) {
+            request(config.url)
+                .get('/api/refuel/')
+                .set('Authorization', 'Basic YnJhaXNnZjpCcmFpczIwMTU=')
+                .expect(200)
+                .expect('Content-Type', /json/)
+                .end(function(err, res) {
+                    if (err) return done(err);
+                    res.body.should.be.instanceof(Array);
+                    res.body.should.have.length(1);
+
+                    res.body[0].should.have.property('date', 1439736878);
+                    res.body[0].should.have.property('gas_price', 8.888);
+                    res.body[0].should.have.property('gas_station', "Repsol Plaza de España, Vigo");
+                    res.body[0].should.have.property('price_amount', 88.88);
+                    res.body[0].should.have.property('fuel_amount', 88.88);
+                    res.body[0].should.have.property('previous_distance', 888.88);
+                   
                     done();
                 });
         });
