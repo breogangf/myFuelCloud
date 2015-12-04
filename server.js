@@ -9,6 +9,7 @@ var vehicleController = require('./controllers/vehicle');
 var refuelController = require('./controllers/refuel');
 var authController = require('./controllers/auth');
 var emailController = require('./controllers/email');
+var statisticsController = require('./controllers/statistic');
 var config = require('./config');
 
 // Connection to DB
@@ -87,6 +88,10 @@ router.route('/refuel/:refuelId')
   .get(authController.isAuthenticated, refuelController.getRefuel)
   .put(authController.isAuthenticated, refuelController.updateRefuel)
   .delete(authController.isAuthenticated, refuelController.deleteRefuel);
+
+// Create endpoint handlers for /statistics
+router.route('/statistics')
+  .get(authController.isAuthenticated, statisticsController.getStatistics);
 
 // Register all our routes with /api
 app.use('/api', router);
