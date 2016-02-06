@@ -27,12 +27,15 @@ exports.getStatistics = function(req, res) {
                 //console.log('Previous distance: ' + refuels[i].previous_distance);
                 //console.log('Gas price: ' + refuels[i].gas_price);
 
-                statistic.price_amount_average += refuels[i].price_amount;
-                statistic.fuel_amount_average += refuels[i].fuel_amount;
-                statistic.fuel_consumption_average += (refuels[i].fuel_amount*100)/refuels[i].previous_distance;
-                statistic.cost_per_kilometer += refuels[i].price_amount/refuels[i].previous_distance;
-                statistic.previous_distance_average += refuels[i].previous_distance;
-                statistic.gas_price_average += refuels[i].gas_price;
+                if (refuels[i].previous_distance > 1){
+                    statistic.price_amount_average += refuels[i].price_amount;
+                    statistic.fuel_amount_average += refuels[i].fuel_amount;
+                    statistic.fuel_consumption_average += (refuels[i].fuel_amount*100)/refuels[i].previous_distance;
+                    statistic.cost_per_kilometer += refuels[i].price_amount/refuels[i].previous_distance;
+                    statistic.previous_distance_average += refuels[i].previous_distance;
+                    statistic.gas_price_average += refuels[i].gas_price;
+                }
+                
             };
 
             statistic.price_amount_average = statistic.price_amount_average/i;
