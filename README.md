@@ -28,5 +28,9 @@ MyFuelCloud developers.
 * Logs
     * rhc tail -a myFuelCloud
 
+* Backups
+    * mongodump --host MONGODB_IP --port MONGODB_PORT --username YOUR_USERNAME --password YOUR_PASSWORD
+    * mongorestore --host MONGODB_IP --port MONGODB_PORT --username YOUR_USERNAME --password YOUR_PASSWORD dump/
+
 ### Who do I talk to? ###
     * Breogán González Fernández (@breogangf)
