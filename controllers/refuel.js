@@ -32,7 +32,7 @@ exports.getAllRefuels = function(req, res) {
             if (err) res.send(500, err.refuel);
             //console.log(refuels);
             res.status(200).jsonp(refuels);
-        }).populate('vehicle');
+        }).sort({date:-1}).populate('vehicle');
 };
 
 // Create endpoint /api/refuels/:refuel_id for GET
