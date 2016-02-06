@@ -130,23 +130,23 @@ describe('Statistics Test', function() {
                     res.body.should.be.instanceof(Array);
                     res.body.should.have.length(2);
 
-                    res.body[0].should.have.property('date', 1429833600);
-                    res.body[0].should.have.property('gas_price', 1.359);
-                    res.body[0].should.have.property('gas_station', "Cepsa Noal Porto do Son");
-                    res.body[0].should.have.property('price_amount', 68.00);
-                    res.body[0].should.have.property('fuel_amount', 50.03);
-                    res.body[0].should.have.property('previous_distance', 778.3);
-                    res.body[0].vehicle.should.have.property('brand', 'Subaru');
-                    res.body[0].vehicle.should.have.property('model', 'WRX sti');
-
-                    res.body[1].should.have.property('date', 1430352000);
-                    res.body[1].should.have.property('gas_price', 1.370);
+                    res.body[1].should.have.property('date', 1429833600);
+                    res.body[1].should.have.property('gas_price', 1.359);
                     res.body[1].should.have.property('gas_station', "Cepsa Noal Porto do Son");
-                    res.body[1].should.have.property('price_amount', 74.00);
-                    res.body[1].should.have.property('fuel_amount', 54.02);
-                    res.body[1].should.have.property('previous_distance', 846.5);
+                    res.body[1].should.have.property('price_amount', 68.00);
+                    res.body[1].should.have.property('fuel_amount', 50.03);
+                    res.body[1].should.have.property('previous_distance', 778.3);
                     res.body[1].vehicle.should.have.property('brand', 'Subaru');
                     res.body[1].vehicle.should.have.property('model', 'WRX sti');
+
+                    res.body[0].should.have.property('date', 1430352000);
+                    res.body[0].should.have.property('gas_price', 1.370);
+                    res.body[0].should.have.property('gas_station', "Cepsa Noal Porto do Son");
+                    res.body[0].should.have.property('price_amount', 74.00);
+                    res.body[0].should.have.property('fuel_amount', 54.02);
+                    res.body[0].should.have.property('previous_distance', 846.5);
+                    res.body[0].vehicle.should.have.property('brand', 'Subaru');
+                    res.body[0].vehicle.should.have.property('model', 'WRX sti');
 
                     done();
                 });
